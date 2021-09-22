@@ -1,0 +1,20 @@
+language: c++
+
+os: osx
+
+osx_image: xcode12.5
+
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew
+
+before_cache:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew cleanup; fi
+
+addons:
+  homebrew:
+    packages:
+      - qt
+script:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH=/usr/local/opt/qt/bin/:${PATH}; fi
+  - echo Done!!
